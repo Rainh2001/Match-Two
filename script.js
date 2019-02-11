@@ -1,10 +1,13 @@
+// HTML element variables
 var game_div;
 var gameBox_div;
 var restart_span;
 
+// 4x4 matrix of circles
 const rows = 4;
 const cols = 4;
 
+// Array for each color
 const hue = [
     "#ff0000",
     "#ff8800",
@@ -17,12 +20,14 @@ const hue = [
 ];
 const background = "#3e4e6d";
 
+// Game variables
 var row = new Array(rows);
-var circle = [];
+var circle = new Array(rows*cols);  
 var currentCircle = new Array(2);
 var newPair = true;
 var circlesChanged = true;
 
+// Each circle is an object of this class
 class Circle {
     constructor(element, circleColor, circleState){
         this.elem = element;
@@ -30,12 +35,15 @@ class Circle {
         this.state = circleState || false;
     }
 }
+// Cache HTML elements
 onload = function() {
     game_div = document.getElementById("game");
     gameBox_div = document.getElementById("game-box");
     restart_span = document.getElementById("restart-text");
     setup();
 }
+// Create 4 row divs, and create 4 circle divs in each row
+// Also implement event listener for circle clicks
 function setup(){
     for(let i = rows-1; i > -1; i--){
         row[i] = document.createElement("div");
@@ -61,6 +69,8 @@ function setup(){
     restart_span.addEventListener("click", function(){reset()});
     setColors();
 }
+// Assign the circles with their colors
+// There can only be two of the same color
 function setColors(){
     let colorSet;
     let frequency = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -78,12 +88,15 @@ function setColors(){
         }
     }
 }
+// First circle click simply changes the color and passes the circle to an array
 function firstCircle(circle){
     currentCircle[0] = circle;
     circle.elem.style.backgroundColor = circle.color;
     circle.state = true;
     newPair = false;
 }
+// Second circle click checks whether or not the colors of the two circles are the same
+// If they are, they stay colored. If they don't match, the colors disappear
 function secondCircle(circle){
     currentCircle[1] = circle;
     circle.elem.style.backgroundColor = circle.color;
@@ -102,6 +115,7 @@ function resetCircles(){
         circlesChanged = true;
     }
 }
+// Reset the board and all game variables
 function reset(){
     for(let i = 0; i < rows; i++){
         for(let j = 0; j < cols; j++){
