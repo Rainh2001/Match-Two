@@ -21,8 +21,6 @@ header h1 {
     margin: 30px;
 }
 #game-box {
-    border: 5px solid white;
-    border-radius: 3%;
     width: 660px;
     margin: auto;
 }
