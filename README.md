@@ -1,37 +1,15 @@
-## Welcome to GitHub Pages
+# Match Two
 
-You can use the [editor on GitHub](https://github.com/Rainh2001/Match-Two/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This match-two memory game is a simple web-page application coded primarily with JavaScript, followed by CSS and HTML. This was a rather quick and easy project which I completed within a few hours. I've attempted this same JavaScript app before, and I failed to some extent for some reason or another. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Issue
 
-### Markdown
+There is one logic error which confuses me. In the CSS, the 'background-color' property of the circle class is set to 'white' whenever the user hovers their cursor over the div element:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```css
+.circle:hover {
+    background-color: white;
+}
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Rainh2001/Match-Two/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+This property is expressed however, when one of the circles is clicked, this property is removed for some reason or another. In my previous attempt at this project, this component worked completely fine...
